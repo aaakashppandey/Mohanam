@@ -48,12 +48,12 @@ export default function Footer() {
           <h3 className="text-sm font-semibold tracking-wide mb-4">CONTACT</h3>
           <div className="text-sm space-y-2">
             <p>Call Us: +91 7999555222</p>
-            <p>E-mail: book@postcardresorts.com</p>
+            <p>E-mail: book@postshreemohanamcardresorts.com</p>
 
             <div className="mt-4">
               <p className="font-medium">Corporate Office</p>
               <p className="mt-1 leading-relaxed">
-                The Postcard Hotels & Resorts <br />
+                The Shree Mohanams & Resorts <br />
                 Untitled Hotels & Resorts Pvt. Ltd. <br />
                 169, National Media Centre <br />
                 Near Shankar Chowk, Gurugram - 122002 <br />
@@ -148,9 +148,9 @@ export default function Footer() {
           {openSection === "contact" && (
             <div className="mt-4 text-sm space-y-2">
               <p>Call Us: +91 7999555222</p>
-              <p>E-mail: book@postcardresorts.com</p>
+              <p>E-mail: book@shreemohanaresorts.com</p>
               <p className="mt-2 leading-relaxed">
-                The Postcard Hotels & Resorts <br />
+                The Shree Mohanams & Resorts <br />
                 169, National Media Centre <br />
                 Gurugram - 122002, India
               </p>
@@ -163,7 +163,7 @@ export default function Footer() {
           <h3 className="text-lg tracking-wide mb-3">HEAR FROM US</h3>
           <p className="text-sm mb-6 leading-relaxed">
             Join our mailing list for holiday inspiration and the best offers at
-            The Postcard Hotel.
+            The Shree Mohanam.
           </p>
 
           <button className="w-full border border-gray-700 py-3 text-sm tracking-wide">
@@ -181,7 +181,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="mt-10 text-xs text-gray-600 text-center md:text-left">
-        © THE POSTCARD HOTELS & RESORTS ALL RIGHTS RESERVED, 2026
+        © THE Shree MohanamS & RESORTS ALL RIGHTS RESERVED, 2026
       </div>
     </footer>
   );

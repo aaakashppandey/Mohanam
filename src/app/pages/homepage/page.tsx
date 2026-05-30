@@ -58,26 +58,36 @@ export default function HomePage() {
         showArrows={true}
         autoPlay={true}
       />
-      <Carousel
-        type="text"
-        variant="compact"
-        texts={testimonials}
-        autoPlay
-        showArrows={false}
-      />
-      <SplitCard
-        title="THE POSTCARD SUNSHINE CLUB"
-        description="The Postcard Sunshine Club is our way of making life at our hotels even better for returning guests..."
-        image={images[0]}
-        ctaText="Explore"
-        ctaLink="/explore"
-      />
-      <SplitCard
-        title="LUXURY REDEFINED"
-        description="Experience comfort and elegance like never before..."
-        image={images[1]}
-        reverse={true}
-      />
+      <div className="py-4">
+
+
+        <Carousel
+
+          type="text"
+          variant="compact"
+          texts={testimonials}
+          autoPlay
+          showArrows={false}
+        />
+      </div>
+      <div className="py-4">
+        <SplitCard
+          title="THE SHREE MOHANAM SUNSHINE CLUB"
+          description="The Shree Mohanam Sunshine Club is our way of making life at our hotels even better for returning guests..."
+          image={images[0]}
+          ctaText="Explore"
+          ctaLink="/explore"
+        />
+      </div>
+      <div className="py-4">
+
+        <SplitCard
+          title="LUXURY REDEFINED"
+          description="Experience comfort and elegance like never before..."
+          image={images[1]}
+          reverse={true}
+        />
+      </div>
     </div>
   );
 }

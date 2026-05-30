@@ -26,6 +26,18 @@ export default function RootLayout({
         className={`${raleway.variable} antialiased`}
         style={{ fontFamily: "var(--font-raleway)" }}
       >
+        <div className="fixed inset-0 -z-10">
+
+          {/* Image */}
+          <div className="absolute inset-0 bg-[url('/logo.jpeg')] bg-cover bg-center opacity-20" />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-white/70" />
+
+          {/* Blur */}
+          <div className="absolute inset-0 backdrop-blur-sm" />
+
+        </div>
         <Navbar />
         {children}
         <Footer />

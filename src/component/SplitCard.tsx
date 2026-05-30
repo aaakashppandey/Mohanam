@@ -21,7 +21,7 @@ export default function SplitCard({
   reverse = false,
 }: SplitCardProps) {
   return (
-    <section className="w-full bg-gray-100">
+    <section className="w-full">
       <div
         className={`flex flex-col md:flex-row ${
           reverse ? "md:flex-row-reverse" : ""

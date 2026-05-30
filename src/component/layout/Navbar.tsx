@@ -13,15 +13,15 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#fff8f1] border-b border-gray-200">
-        <div className="relative w-full px-6 py-3 flex items-center">
+      <header className="sticky top-0 z-50 bg-[#fefdfb] border-b border-gray-200">
+        <div className="relative w-full px-6 flex items-center">
           {/* ✅ LEFT: LOGO */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo.jpg"
+              src="/logo.jpeg"
               alt="Shree Mohanam"
-              width={140}
-              height={50}
+              width={120}
+              height={40}
               className="object-contain"
             />
           </Link>
@@ -32,7 +32,7 @@ const Navbar = () => {
             className="md:hidden ml-4 flex flex-col justify-center items-center w-8 h-8 relative active:scale-90"
           >
             <span
-              className={`absolute h-[2px] w-6 bg-gray-800 transition-all duration-300 ease-in-out ${
+              className={`absolute h-0.5 w-6 bg-gray-800 transition-all duration-300 ease-in-out ${
                 isOpen ? "rotate-45 top-3" : "top-2"
               }`}
             />

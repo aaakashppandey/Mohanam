@@ -4,19 +4,19 @@ import { Clock, Coffee, Utensils } from "lucide-react";
 
 export default function AboutUs() {
   return (
-    <section className="bg-gray-100 py-20 px-6 text-center">
+    <section className=" py-20 px-6 text-center">
       {/* Heading */}
       <h2 className="text-xl md:text-2xl tracking-wide font-medium text-gray-800 mb-6">
-        WELCOME TO THE POSTCARD HOTEL
+        WELCOME TO THE SHREE MOHANAM
       </h2>
 
       {/* Description */}
       <p className="max-w-4xl mx-auto text-gray-600 leading-relaxed text-sm md:text-base">
-        The Postcard Hotel is a collection of intimate luxury hotels hidden in
+        The Shree Mohanam is a collection of intimate luxury hotels hidden in
         holiday destinations across India and the world. Our hotels recall an
         era when holidays were sun-kissed and still, where the days were spent
         idling and flipping through old magazines against the backdrop of
-        charming, quiet neighbourhoods. In that spirit, The Postcard Hotel
+        charming, quiet neighbourhoods. In that spirit, The Shree Mohanam
         combines luxury with simplicity, helping you retreat to a life you’ve
         always wanted - simple, un-hurried and filled with rich, little
         discoveries.

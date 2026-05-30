@@ -77,7 +77,7 @@ export default function Carousel({
       {/* ================= TEXT MODE ================= */}
       {type === "text" && (
         <div
-          className={`relative flex flex-col items-center justify-center text-center ${containerHeight} bg-gray-100 px-6`}
+          className={`relative flex flex-col items-center justify-center text-center ${containerHeight} px-6`}
         >
           {/* ✅ Plane (STATIC - always visible) */}
           <Plane className="absolute top-8 left-1/2 -translate-x-1/2 text-gray-500" />
@@ -96,7 +96,7 @@ export default function Carousel({
               </p>
 
               {/* Divider */}
-              <div className="w-12 h-[1px] bg-gray-400 mx-auto my-6" />
+              <div className="w-12 h-[1px] mx-auto my-6" />
 
               {/* Author */}
               <p className="text-sm text-gray-600 tracking-wide">
