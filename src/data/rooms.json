@@ -1,0 +1,26 @@
+[
+  {
+    "id": "room-1",
+    "name": "Deluxe Room",
+    "price": 5999,
+    "image": "/Carousel/hotel-image1.avif",
+    "description": "Spacious room with king bed and city views.",
+    "features": ["WiFi", "AC", "King Bed"]
+  },
+  {
+    "id": "room-2",
+    "name": "Executive Suite",
+    "price": 8999,
+    "image": "/Carousel/hotel-image2.avif",
+    "description": "Luxury suite with separate living area and minibar.",
+    "features": ["WiFi", "AC", "Mini Bar", "City View"]
+  },
+  {
+    "id": "room-3",
+    "name": "Standard Room",
+    "price": 3999,
+    "image": "/Carousel/hotel-image4.jpg",
+    "description": "Comfortable room ideal for short stays.",
+    "features": ["WiFi", "Queen Bed"]
+  }
+]

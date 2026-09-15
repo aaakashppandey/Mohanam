@@ -2,18 +2,41 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastY = useRef(0);
+  const router = useRouter();
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastY.current && y > 50) {
+        // scrolling down -> hide
+        setVisible(false);
+      } else {
+        // scrolling up -> show
+        setVisible(true);
+      }
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#fefdfb] border-b border-gray-200">
+      <header
+        className={`sticky top-0 z-50 bg-[#fefdfb] border-b border-gray-200 transition-transform duration-300 ${visible ? "translate-y-0" : "-translate-y-full"
+          }`}
+      >
         <div className="relative w-full px-6 flex items-center">
           {/* ✅ LEFT: LOGO */}
           <Link href="/" className="flex items-center">
@@ -32,19 +55,16 @@ const Navbar = () => {
             className="md:hidden ml-4 flex flex-col justify-center items-center w-8 h-8 relative active:scale-90"
           >
             <span
-              className={`absolute h-0.5 w-6 bg-gray-800 transition-all duration-300 ease-in-out ${
-                isOpen ? "rotate-45 top-3" : "top-2"
-              }`}
+              className={`absolute h-0.5 w-6 bg-gray-800 transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 top-3" : "top-2"
+                }`}
             />
             <span
-              className={`absolute h-[2px] w-6 bg-gray-800 transition-all duration-300 ease-in-out ${
-                isOpen ? "opacity-0" : "top-3"
-              }`}
+              className={`absolute h-[2px] w-6 bg-gray-800 transition-all duration-300 ease-in-out ${isOpen ? "opacity-0" : "top-3"
+                }`}
             />
             <span
-              className={`absolute h-[2px] w-6 bg-gray-800 transition-all duration-300 ease-in-out ${
-                isOpen ? "-rotate-45 top-3" : "top-4"
-              }`}
+              className={`absolute h-[2px] w-6 bg-gray-800 transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 top-3" : "top-4"
+                }`}
             />
           </button>
 
@@ -88,21 +108,20 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <Link
-              href="/register"
+            <button
+              onClick={() => router.push('/booking')}
               className="bg-[#C46A2E] text-white px-5 py-2 rounded-sm hover:bg-[#a55524] font-semibold"
             >
               BOOK
-            </Link>
+            </button>
           </div>
         </div>
       </header>
 
       {/* ✅ MOBILE MENU */}
       <div
-        className={`fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 text-lg transition-all duration-300 ease-in-out ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 text-lg transition-all duration-300 ease-in-out ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
       >
         <Link href="/" onClick={() => setIsOpen(false)}>
           Home

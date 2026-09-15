@@ -1,0 +1,165 @@
+{
+  "rooms": [
+    {
+      "id": "RM001",
+      "roomType": "Standard Single",
+      "name": "Standard Single Room",
+      "description": "A cozy room perfect for solo travelers with all essential amenities.",
+      "pricePerNight": 79.99,
+      "currency": "USD",
+      "maxOccupancy": 1,
+      "bedType": "Single",
+      "bedCount": 1,
+      "sizeSqFt": 200,
+      "floor": 2,
+      "amenities": ["Free WiFi", "Air Conditioning", "TV", "Work Desk"],
+      "images": [
+        "https://example.com/images/standard-single-1.jpg",
+        "https://example.com/images/standard-single-2.jpg"
+      ],
+      "available": true,
+      "rating": 4.1,
+      "reviewCount": 128
+    },
+    {
+      "id": "RM002",
+      "roomType": "Deluxe Double",
+      "name": "Deluxe Double Room",
+      "description": "Spacious room with modern decor, ideal for couples or business travelers.",
+      "pricePerNight": 129.99,
+      "currency": "USD",
+      "maxOccupancy": 2,
+      "bedType": "Queen",
+      "bedCount": 1,
+      "sizeSqFt": 320,
+      "floor": 4,
+      "amenities": ["Free WiFi", "Air Conditioning", "Smart TV", "Mini Bar", "Coffee Maker", "Safe"],
+      "images": [
+        "https://example.com/images/deluxe-double-1.jpg",
+        "https://example.com/images/deluxe-double-2.jpg"
+      ],
+      "available": true,
+      "rating": 4.5,
+      "reviewCount": 312
+    },
+    {
+      "id": "RM003",
+      "roomType": "Deluxe King Suite",
+      "name": "Deluxe King Suite",
+      "description": "Luxurious suite featuring a king-size bed, separate living area, and premium city views.",
+      "pricePerNight": 249.99,
+      "currency": "USD",
+      "maxOccupancy": 3,
+      "bedType": "King",
+      "bedCount": 1,
+      "sizeSqFt": 550,
+      "floor": 8,
+      "amenities": [
+        "Free WiFi",
+        "Air Conditioning",
+        "Smart TV",
+        "Mini Bar",
+        "Coffee Maker",
+        "Safe",
+        "Living Area",
+        "City View",
+        "Bathtub",
+        "Bathrobe & Slippers"
+      ],
+      "images": [
+        "https://example.com/images/deluxe-king-suite-1.jpg",
+        "https://example.com/images/deluxe-king-suite-2.jpg",
+        "https://example.com/images/deluxe-king-suite-3.jpg"
+      ],
+      "available": true,
+      "rating": 4.8,
+      "reviewCount": 456
+    },
+    {
+      "id": "RM004",
+      "roomType": "Executive Suite",
+      "name": "Executive Business Suite",
+      "description": "Designed for business travelers, featuring a private office space and lounge access.",
+      "pricePerNight": 319.99,
+      "currency": "USD",
+      "maxOccupancy": 2,
+      "bedType": "King",
+      "bedCount": 1,
+      "sizeSqFt": 600,
+      "floor": 10,
+      "amenities": [
+        "Free WiFi",
+        "Air Conditioning",
+        "Smart TV",
+        "Mini Bar",
+        "Coffee Maker",
+        "Safe",
+        "Private Office",
+        "Executive Lounge Access",
+        "City View",
+        "Bathtub"
+      ],
+      "images": [
+        "https://example.com/images/executive-suite-1.jpg",
+        "https://example.com/images/executive-suite-2.jpg"
+      ],
+      "available": false,
+      "rating": 4.7,
+      "reviewCount": 201
+    },
+    {
+      "id": "RM005",
+      "roomType": "Presidential Suite",
+      "name": "Presidential Suite",
+      "description": "The pinnacle of luxury with panoramic views, private terrace, and dedicated butler service.",
+      "pricePerNight": 899.99,
+      "currency": "USD",
+      "maxOccupancy": 4,
+      "bedType": "King",
+      "bedCount": 2,
+      "sizeSqFt": 1200,
+      "floor": 15,
+      "amenities": [
+        "Free WiFi",
+        "Air Conditioning",
+        "Smart TV",
+        "Full Bar",
+        "Private Terrace",
+        "Butler Service",
+        "Jacuzzi",
+        "Panoramic View",
+        "Dining Area",
+        "Walk-in Closet"
+      ],
+      "images": [
+        "https://example.com/images/presidential-suite-1.jpg",
+        "https://example.com/images/presidential-suite-2.jpg",
+        "https://example.com/images/presidential-suite-3.jpg"
+      ],
+      "available": true,
+      "rating": 5.0,
+      "reviewCount": 87
+    },
+    {
+      "id": "RM006",
+      "roomType": "Family Room",
+      "name": "Family Comfort Room",
+      "description": "Spacious room with two queen beds, perfect for families traveling with kids.",
+      "pricePerNight": 179.99,
+      "currency": "USD",
+      "maxOccupancy": 4,
+      "bedType": "Queen",
+      "bedCount": 2,
+      "sizeSqFt": 450,
+      "floor": 3,
+      "amenities": ["Free WiFi", "Air Conditioning", "TV", "Mini Fridge", "Extra Towels", "Crib on Request"],
+      "images": [
+        "https://example.com/images/family-room-1.jpg",
+        "https://example.com/images/family-room-2.jpg"
+      ],
+      "available": true,
+      "rating": 4.3,
+      "reviewCount": 265
+    }
+  ]
+}

@@ -1,12 +1,13 @@
-import HotelHeader from "../../../component/hotel/HotelHeader";
-import HotelGallery from "../../../component/hotel/HotelGallery";
-import HotelInfo from "../../../component/hotel/HotelInfo";
-import RoomCard from "../../../component/room/RoomCard";
+import HotelHeader from "../../component/hotel/HotelHeader";
+import HotelGallery from "../../component/hotel/HotelGallery";
+import HotelInfo from "../../component/hotel/HotelInfo";
+import RoomCard from "../../component/room/RoomCard";
 import CheckInCheckOut from "@/src/component/CheckInCheckOut";
 import Carousel from "@/src/component/Carousel";
 import BookingBar from "@/src/component/booking/BookingBar";
 import AboutUs from "@/src/component/AboutUs";
 import SplitCard from "@/src/component/SplitCard";
+import Layout from "@/src/app/layout";
 
 const hotel = {
   name: "Radisson Blu",
@@ -43,8 +44,8 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="">
-      {/* <BookingBar /> */}
+    <>
+      <BookingBar />
       <Carousel
         images={images}
         variant="hero"
@@ -88,6 +89,6 @@ export default function HomePage() {
           reverse={true}
         />
       </div>
-    </div>
+    </>
   );
 }

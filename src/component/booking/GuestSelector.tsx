@@ -15,27 +15,30 @@ const GuestSelector = ({ guests, setGuests }: Props) => {
       {/* Trigger */}
       <div
         onClick={() => setOpen(!open)}
-        className="border p-2 rounded cursor-pointer"
+        className="border border-gray-200 p-2 rounded-md cursor-pointer text-sm flex items-center gap-2"
       >
-        👤 {guests} Guest{guests > 1 && "s"}
+        <span>👤</span>
+        <span>
+          {guests} Guest{guests > 1 && "s"}
+        </span>
       </div>
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-4 w-48 z-50">
+        <div className="absolute top-12 left-0 bg-white border border-gray-200 shadow-lg rounded-md p-3 w-48 z-50 text-sm">
           <div className="flex justify-between items-center">
-            <span>Guests</span>
+            <span className="font-medium">Guests</span>
             <div className="flex gap-2 items-center">
               <button
                 onClick={() => setGuests(Math.max(1, guests - 1))}
-                className="px-2 border rounded"
+                className="px-2 py-1 border border-gray-200 rounded-md bg-gray-50 hover:bg-gray-100"
               >
                 -
               </button>
-              <span>{guests}</span>
+              <span className="px-2">{guests}</span>
               <button
                 onClick={() => setGuests(guests + 1)}
-                className="px-2 border rounded"
+                className="px-2 py-1 border border-gray-200 rounded-md bg-gray-50 hover:bg-gray-100"
               >
                 +
               </button>

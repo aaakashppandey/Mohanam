@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { authService } from "../../services/authService";
+import Layout from "@/src/component/layout/layout";
 const countryCodes = [
   { code: "+91", label: "🇮🇳 India" },
   { code: "+1", label: "🇺🇸 USA" },
@@ -51,8 +52,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="bg-[#F5EFE7] min-h-screen flex flex-col items-center justify-center px-6 py-16">
-      
+    <Layout>
       {/* Heading */}
       <p className="text-center text-lg md:text-xl text-[#6B4F3A] mb-10 max-w-3xl">
         Join our mailing list for holiday inspiration, offers from our hotels, and gift vouchers
@@ -60,10 +60,10 @@ export default function RegisterPage() {
 
       {/* Form */}
       <div className="w-full max-w-5xl space-y-6">
-        
+
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
+
           {/* Salutation */}
           <select
             value={salutation}
@@ -92,10 +92,10 @@ export default function RegisterPage() {
 
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
+
           {/* Mobile */}
           <div className="flex border border-gray-300">
-            
+
             <select
               value={country.code}
               onChange={(e) =>
@@ -145,7 +145,7 @@ export default function RegisterPage() {
           JOIN WITH OTP
         </button>
       </div>
-    </section>
+    </Layout>
     // <div className="flex items-center justify-center min-h-[80vh] bg-gray-50">
     //   <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
     //     <h2 className="text-2xl font-bold text-center mb-6">Create Account</h2>
