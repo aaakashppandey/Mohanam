@@ -97,9 +97,9 @@ const Navbar = () => {
           </div>
 
           {/* ✅ RIGHT SIDE */}
-          <div className="ml-auto flex flex-col items-end">
+          {/* <div className="ml-auto flex flex-col items-end">
             <div className="text-sm text-gray-600 mb-1">
-              <Link href="/join" className="hover:text-indigo-600">
+              <Link href="/register" className="hover:text-indigo-600">
                 JOIN
               </Link>
               <span className="mx-1">|</span>
@@ -114,7 +114,7 @@ const Navbar = () => {
             >
               BOOK
             </button>
-          </div>
+          </div> */}
         </div>
       </header>
 

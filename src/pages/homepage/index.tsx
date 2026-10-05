@@ -45,7 +45,7 @@ const testimonials = [
 export default function HomePage() {
   return (
     <>
-      <BookingBar />
+      {/* <BookingBar /> */}
       <Carousel
         images={images}
         variant="hero"

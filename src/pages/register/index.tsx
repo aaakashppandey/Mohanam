@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "../../services/authService";
 import Layout from "@/src/component/layout/layout";
 const countryCodes = [
@@ -11,26 +11,57 @@ const countryCodes = [
 ];
 
 const salutations = ["Mr.", "Mrs.", "Miss"];
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
 
 export default function RegisterPage() {
   const [country, setCountry] = useState(countryCodes[0]);
   const [salutation, setSalutation] = useState(salutations[0]);
-  const [whatsapp, setWhatsapp] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
+    phone: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    if (!error && !success) return;
+
+    const timer = setTimeout(() => {
+      setError("");
+      setSuccess("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [error, success]);
 
   const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    if (name === "password") {
+      if (!value) {
+        setPasswordError("");
+        return;
+      }
+
+      if (!passwordPattern.test(value)) {
+        setPasswordError(
+          "Use 8+ characters, including uppercase, lowercase, a number, and a special character."
+        );
+      } else {
+        setPasswordError("");
+      }
+    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -40,9 +71,40 @@ export default function RegisterPage() {
     setSuccess("");
 
     try {
-      const response = await authService.register(formData);
+      const isFormEmpty = Object.values(formData).every(
+        (value) => !String(value).trim()
+      );
+
+      if (isFormEmpty) {
+        setError("Please fill in all fields.");
+        setLoading(false);
+        return;
+      }
+
+      if (!formData.password) {
+        setError("Please fill in all fields.");
+        setLoading(false);
+        return;
+      }
+
+      if (!passwordPattern.test(formData.password)) {
+        setPasswordError(
+          "Use 8+ characters, including uppercase, lowercase, a number, and a special character."
+        );
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      const { confirmPassword, ...payload } = formData;
+      const response = await authService.register(payload);
       setSuccess("Registration successful!");
-      setFormData({ name: "", email: "", password: "" });
+      setFormData({ name: "", email: "", password: "", confirmPassword: "", phone: "" });
       console.log("Response:", response);
     } catch (err: any) {
       setError(err.message || "Registration failed");
@@ -53,97 +115,134 @@ export default function RegisterPage() {
 
   return (
     <Layout>
-      {/* Heading */}
-      <p className="text-center text-lg md:text-xl text-[#6B4F3A] mb-10 max-w-3xl">
-        Join our mailing list for holiday inspiration, offers from our hotels, and gift vouchers
-      </p>
+      <div className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 md:px-8 md:pb-20 md:pt-12">
+        <div className="mx-auto w-full max-w-5xl">
+          {error && (
+            <div className="fixed right-5 top-5 z-50 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-lg">
+              {error}
+            </div>
+          )}
 
-      {/* Form */}
-      <div className="w-full max-w-5xl space-y-6">
+          {success && (
+            <div className="fixed right-5 top-5 z-50 rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow-lg">
+              {success}
+            </div>
+          )}
 
-        {/* Row 1 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-          {/* Salutation */}
-          <select
-            value={salutation}
-            onChange={(e) => setSalutation(e.target.value)}
-            className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
-          >
-            {salutations.map((s, i) => (
-              <option key={i}>{s}</option>
-            ))}
-          </select>
-
-          {/* First Name */}
-          <input
-            type="text"
-            placeholder="FIRST NAME"
-            className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
-          />
-
-          {/* Last Name */}
-          <input
-            type="text"
-            placeholder="LAST NAME"
-            className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
-          />
-        </div>
-
-        {/* Row 2 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-          {/* Mobile */}
-          <div className="flex border border-gray-300">
-
-            <select
-              value={country.code}
-              onChange={(e) =>
-                setCountry(
-                  countryCodes.find((c) => c.code === e.target.value)!
-                )
-              }
-              className="bg-transparent px-3 py-3 border-r border-gray-300 focus:outline-none"
-            >
-              {countryCodes.map((c, i) => (
-                <option key={i} value={c.code}>
-                  {c.label} {c.code}
-                </option>
-              ))}
-            </select>
-
-            <input
-              type="text"
-              placeholder="MOBILE NUMBER"
-              className="w-full px-4 py-3 bg-transparent focus:outline-none"
-            />
-          </div>
-
-          {/* Email */}
-          <input
-            type="email"
-            placeholder="EMAIL ADDRESS"
-            className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
-          />
-        </div>
-
-        {/* WhatsApp */}
-        <div className="flex items-center gap-3">
-          <input
-            type="checkbox"
-            checked={whatsapp}
-            onChange={() => setWhatsapp(!whatsapp)}
-            className="w-5 h-5"
-          />
-          <p className="text-sm text-[#6B4F3A]">
-            Send me updates on WhatsApp
+          {/* Heading */}
+          <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-[#6B4F3A] md:text-xl">
+            Join our mailing list for holiday inspiration, offers from our hotels, and gift vouchers
           </p>
-        </div>
 
-        {/* Button */}
-        <button className="w-full bg-[#2D2424] text-white py-4 tracking-wide hover:opacity-90 transition">
-          JOIN WITH OTP
-        </button>
+          {/* Form */}
+          <form className="w-full space-y-6" onSubmit={handleSubmit}>
+
+            {/* Row 1 */}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+              {/* Salutation */}
+              <select
+                value={salutation}
+                onChange={(e) => setSalutation(e.target.value)}
+                className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
+              >
+                {salutations.map((s, i) => (
+                  <option key={i}>{s}</option>
+                ))}
+              </select>
+
+              {/* Full Name */}
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="FULL NAME"
+                className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
+              />
+            </div>
+
+            {/* Row 2 */}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+              {/* Mobile */}
+              <div className="flex border border-gray-300">
+
+                <select
+                  value={country.code}
+                  onChange={(e) =>
+                    setCountry(
+                      countryCodes.find((c) => c.code === e.target.value)!
+                    )
+                  }
+                  className="border-r border-gray-300 bg-transparent px-3 py-3 focus:outline-none"
+                >
+                  {countryCodes.map((c, i) => (
+                    <option key={i} value={c.code}>
+                      {c.label} {c.code}
+                    </option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="MOBILE NUMBER"
+                  className="w-full bg-transparent px-4 py-3 focus:outline-none"
+                />
+              </div>
+
+              {/* Email */}
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="EMAIL ADDRESS"
+                className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-1">
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="PASSWORD"
+                className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
+              />
+              {(passwordError || formData.password) && (
+                <p className="text-sm text-red-600">
+                  {passwordError ||
+                    "Use 8+ characters, including uppercase, lowercase, a number, and a special character."}
+                </p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="CONFIRM PASSWORD"
+                className="border border-gray-300 bg-transparent px-4 py-3 focus:outline-none"
+              />
+            </div>
+
+            {/* Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#2D2424] py-4 tracking-wide text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {loading ? "REGISTERING..." : "REGISTER"}
+            </button>
+          </form>
+        </div>
       </div>
     </Layout>
     // <div className="flex items-center justify-center min-h-[80vh] bg-gray-50">
