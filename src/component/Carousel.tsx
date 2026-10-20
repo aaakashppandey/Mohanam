@@ -33,7 +33,7 @@ export default function Carousel({
   const containerHeight =
     height ||
     (variant === "hero"
-      ? "h-screen"
+      ? "h-[420px] md:h-[500px]"
       : type === "text"
         ? "h-[300px] md:h-[350px]"
         : "h-[250px] md:h-[350px]");
@@ -66,9 +66,8 @@ export default function Carousel({
               src={img}
               alt="carousel"
               fill
-              className={`object-cover absolute inset-0 transition-opacity duration-700 ${
-                i === current ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
+              className={`object-cover absolute inset-0 transition-opacity duration-700 ${i === current ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
             />
           ))}
         </div>
@@ -86,9 +85,8 @@ export default function Carousel({
           {texts.map((item, i) => (
             <div
               key={i}
-              className={`absolute max-w-3xl px-6 transition-opacity duration-700 ${
-                i === current ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute max-w-3xl px-6 transition-opacity duration-700 ${i === current ? "opacity-100" : "opacity-0"
+                }`}
             >
               {/* Quote */}
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mt-12">

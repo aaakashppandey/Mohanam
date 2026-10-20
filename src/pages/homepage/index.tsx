@@ -25,9 +25,10 @@ const hotel = {
 };
 
 const images: string[] = [
-  "/Carousel/hotel-image1.avif",
-  "/Carousel/hotel-image2.avif",
-  "/Carousel/hotel-image4.jpg",
+  "/Carousel/deluxe.png",
+  "/Carousel/banquet.png",
+  "/Carousel/suite.png",
+  "/Carousel/reception.png",
 ];
 const testimonials = [
   {
@@ -45,13 +46,27 @@ const testimonials = [
 export default function HomePage() {
   return (
     <>
-      {/* <BookingBar /> */}
-      <Carousel
-        images={images}
-        variant="hero"
-        autoPlay={true}
-        showArrows={false}
-      />
+      <div className="relative">
+        <div className="relative overflow-hidden">
+          <Carousel
+            images={images}
+            variant="hero"
+            autoPlay={true}
+            showArrows={false}
+          />
+          <div className="absolute inset-0 bg-[#050505]/75" />
+        </div>
+
+        <div
+          className="absolute inset-x-0 top-6 z-20 flex justify-center px-4 text-white"
+          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+        >
+          <div className="w-full max-w-[1200px] rounded-xl border border-white/15 bg-[#0d0d0d]/80 p-3 shadow-xl backdrop-blur-[2px] md:p-4">
+            <BookingBar />
+          </div>
+        </div>
+      </div>
+
       <AboutUs />
       <Carousel
         images={images}
